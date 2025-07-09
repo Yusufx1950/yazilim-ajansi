@@ -247,7 +247,7 @@ class _AnasayfaState extends State<Anasayfa> {
                 2,
               ),
               cardItem(
-                "Siber Güvenlik",
+                "Siber Güvenlikk",
                 "Uygulama güvenliği her zaman ön plandadır.",
                 Assets.assetsGuvenlik,
                 3,
