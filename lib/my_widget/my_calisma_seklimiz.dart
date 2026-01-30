@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:okanyazilim2/models/calisma_sekli.dart';
 import 'package:okanyazilim2/my_widget/my_text.dart';
 
 class MyCalismaSeklimiz extends StatefulWidget {
-  const MyCalismaSeklimiz({super.key});
-
+  MyCalismaSeklimiz({super.key, required this.calismaSekli});
+  CalismaSekli calismaSekli;
   @override
   State<MyCalismaSeklimiz> createState() => _MyCalismaSeklimizState();
 }
@@ -33,17 +33,14 @@ class _MyCalismaSeklimizState extends State<MyCalismaSeklimiz> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(CupertinoIcons.arrow_swap, size: 242),
+                Icon(widget.calismaSekli.icon, size: 242),
                 MyTextBaslik(
-                  text: "hello",
-                  renk: Colors.teal.shade600,
+                  text: widget.calismaSekli.baslik,
+                  renk: widget.calismaSekli.renk,
                   FontSize: 20,
                   Font: FontWeight.bold,
                 ),
-                MyText(
-                  text:
-                      "loreasdasdmapsdmapmsdpamsdmasdpmasdmaspdmasdmapsdmapsdmaspdmapsdmpasdm",
-                ),
+                MyText(text: widget.calismaSekli.aciklama),
               ],
             ),
           ),

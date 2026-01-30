@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:okanyazilim2/models/calisma_sekli.dart';
 import 'package:okanyazilim2/my_scaffold/my_app_bar.dart';
 import 'package:okanyazilim2/my_scaffold/my_boottom_menu.dart';
 import 'package:okanyazilim2/my_widget/ince_cizgi.dart';
@@ -750,13 +751,17 @@ class _AnasayfaState extends State<Anasayfa> {
 
   Widget CalismaSeklimiz() {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Wrap(
         spacing: 8, // Kartlar arası yatay boşluk
         runSpacing: 8, // Satırlar arası dikey boşluk
-        children: List.generate(8, (index) {
-          return MyCalismaSeklimiz();
-        }),
+        children: List.generate(
+          calismaSekilleri.length, // listedeki eleman sayısı kadar
+          (index) {
+            final item = calismaSekilleri[index];
+            return MyCalismaSeklimiz(calismaSekli: item); // data ile render
+          },
+        ),
       ),
     );
   }
