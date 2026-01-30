@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
 
 class MyText extends StatelessWidget {
-  MyText({
-    super.key,
+  final String text;
+  final TextStyle? style;
+  final Color? color;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+
+  const MyText({
+    Key? key,
     required this.text,
-    this.Font = FontWeight.normal,
-    this.FontSize = 16,
-    this.renk = Colors.black87,
-  });
-  String text;
-  double FontSize;
-  FontWeight Font;
-  Color renk;
+    this.style,
+    this.color,
+    this.fontSize,
+    this.fontWeight,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Text(
-      style: TextStyle(fontSize: FontSize, fontWeight: Font, color: renk),
       text,
-      softWrap: true, // Satır sonuna gelince aşağı inmesini sağlar
-      maxLines: null, // Satır sayısını sınırsız yapar
-      overflow: TextOverflow.visible,
+      style:
+          style ??
+          TextStyle(
+            color: color ?? Colors.white, // Varsayılan beyaz (koyu tema)
+            fontSize: fontSize ?? 16,
+            fontWeight: fontWeight ?? FontWeight.normal,
+          ),
     );
   }
 }

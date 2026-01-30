@@ -7,9 +7,12 @@ class MyIconButton extends StatefulWidget {
     required this.onPressed,
     this.onFocus = Colors.white70,
     this.onHover = Colors.blueAccent,
-
+    this.bgColor = Colors.black26,
+    this.iconColor = Colors.white,
     this.boyut = 30,
   });
+  Color bgColor;
+  Color iconColor;
   IconData icon;
   double boyut;
   Color onFocus;
