@@ -2,21 +2,25 @@
 class Assets {
   Assets._();
 
-  static const String assetsArkaplanboya = 'assets/arkaplanboya.png';
   static const String assetsBannerBg = 'assets/banner-bg.png';
   static const String assetsGelistirme = 'assets/gelistirme.png';
+  static const String assetsGrafikTasarim = 'assets/grafik-tasarim.png';
   static const String assetsGuvenlik = 'assets/guvenlik.png';
+  static const String assetsIcerikGelistirme = 'assets/icerik-gelistirme.png';
   static const String assetsKimlik = 'assets/kimlik.png';
   static const String assetsKurumsal = 'assets/kurumsal.png';
   static const String assetsLogobeyaz = 'assets/logobeyaz.png';
   static const String assetsLogosiyah = 'assets/logosiyah.png';
+  static const String assetsMarkalasmaStratejisi =
+      'assets/markalasma-stratejisi.png';
+  static const String assetsMasaustuUygulama = 'assets/masaustu-uygulama.png';
+  static const String assetsMobilUygulama = 'assets/mobil-uygulama.png';
   static const String assetsPnglogobeyaz = 'assets/pnglogobeyaz.png';
   static const String assetsPnglogosiyah = 'assets/pnglogosiyah.png';
   static const String assetsSeyahat = 'assets/seyahat.png';
-  static const String siyah1 = 'assets/siyah/1.png';
-  static const String siyah2 = 'assets/siyah/2.png';
-  static const String siyah3 = 'assets/siyah/3.png';
-  static const String siyah4 = 'assets/siyah/4.png';
-  static const String siyah5 = 'assets/siyah/5.png';
-  static const String siyah6 = 'assets/siyah/6.png';
+  static const String assetsSiberGuvenlik = 'assets/siber-guvenlik.png';
+  static const String assetsUrunPazarlama = 'assets/urun-pazarlama.png';
+  static const String assetsWebTasarim = 'assets/web-tasarim.png';
+  static const String assetsWebUygulama = 'assets/web-uygulama.png';
+  static const String generatedAssets = 'lib/generated/assets.dart';
 }
