@@ -1,1 +1,37 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"okan-yazilim-ajansi","appId":"1:402188709733:android:a0f6e1dfe0a0f291dcbb8c","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"okan-yazilim-ajansi","configurations":{"android":"1:402188709733:android:a0f6e1dfe0a0f291dcbb8c","ios":"1:402188709733:ios:52368f985c5ea00adcbb8c","web":"1:402188709733:web:75303163456388dfdcbb8c"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "okan-yazilim-ajansi",
+          "appId": "1:402188709733:android:a0f6e1dfe0a0f291dcbb8c",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "okan-yazilim-ajansi",
+          "configurations": {
+            "android": "1:402188709733:android:a0f6e1dfe0a0f291dcbb8c",
+            "ios": "1:402188709733:ios:52368f985c5ea00adcbb8c",
+            "web": "1:402188709733:web:75303163456388dfdcbb8c"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

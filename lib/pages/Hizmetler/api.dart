@@ -39,7 +39,7 @@ class _ApiState extends State<Api> with TickerProviderStateMixin {
   "data": {
     "user": {
       "id": 12345,
-      "name": "Ahmet Yılmaz",
+      "name": "Admin",
       "role": "admin"
     },
     "token": "eyJhbGciOiJIUzI1...",
@@ -604,74 +604,111 @@ class _ApiState extends State<Api> with TickerProviderStateMixin {
   }
 
   Widget _buildServiceCard(ApiService service) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1E293B),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: const Color(0xFF334155)),
-        boxShadow: [
-          BoxShadow(
-            color: service.color.withOpacity(0.1),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isNarrow = constraints.maxWidth < 300; // Dar kart kontrolü
+
+        return Container(
+          padding: EdgeInsets.all(
+            isNarrow ? 16 : 20,
+          ), // Dar ekranda küçük padding
+          decoration: BoxDecoration(
+            color: const Color(0xFF1E293B),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: const Color(0xFF334155)),
+            boxShadow: [
+              BoxShadow(
+                color: service.color.withOpacity(0.1),
+                blurRadius: 20,
+                offset: const Offset(0, 8),
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: service.color.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(service.icon, color: service.color, size: 28),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            service.title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            service.description,
-            style: TextStyle(
-              color: Colors.grey[400],
-              fontSize: 12,
-              height: 1.5,
-            ),
-          ),
-          const Spacer(),
-          Wrap(
-            spacing: 6,
-            runSpacing: 6,
-            children: service.features.map((feature) {
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: service.color.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(6),
-                  border: Border.all(color: service.color.withOpacity(0.3)),
-                ),
-                child: Text(
-                  feature,
-                  style: TextStyle(
-                    color: service.color,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
+          child: Column(
+            mainAxisSize: MainAxisSize.min, // ÖNEMLİ: İçerik kadar yer kapla
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // İkon ve Başlık Row (Yan yana gelebilir)
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: service.color.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Icon(service.icon, color: service.color, size: 24),
                   ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    // Başlık taşarsa kırpılacak
+                    child: Text(
+                      service.title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 12),
+
+              // Açıklama
+              Text(
+                service.description,
+                style: TextStyle(
+                  color: Colors.grey[400],
+                  fontSize: 12,
+                  height: 1.4,
                 ),
-              );
-            }).toList(),
+                maxLines: 3, // Maksimum 3 satır
+                overflow: TextOverflow.ellipsis,
+                softWrap: true,
+              ),
+
+              const SizedBox(height: 16), // Spacer() yerine sabit boşluk
+              // Özellikler - Dar alanda daha kompakt
+              Wrap(
+                spacing: 6,
+                runSpacing: 8,
+                alignment: WrapAlignment.start,
+                children: service.features.map((feature) {
+                  return Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 6,
+                      vertical: 3,
+                    ),
+                    decoration: BoxDecoration(
+                      color: service.color.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(4),
+                      border: Border.all(
+                        color: service.color.withOpacity(0.3),
+                        width: 0.5,
+                      ),
+                    ),
+                    child: Text(
+                      feature,
+                      style: TextStyle(
+                        color: service.color,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                  );
+                }).toList(),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 

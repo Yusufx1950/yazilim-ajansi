@@ -78,6 +78,25 @@ class _MusteriMemnuniyetiState extends State<MusteriMemnuniyeti>
     final double maxContentWidth = isDesktop ? 1000 : double.infinity;
 
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: const Color(0xFF0A0F1C),
+        title: const Text(
+          'Müşteri Memnuniyeti',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.tune, color: Colors.white70),
+            onPressed: () {},
+          ),
+        ],
+      ),
       backgroundColor: const Color(0xFF0A0F1C), // Deep dark background
       body: Container(
         decoration: BoxDecoration(

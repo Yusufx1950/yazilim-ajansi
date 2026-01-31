@@ -31,7 +31,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
       // Başlık stilleri
       title: MyText(
-        text: "Okan Yazılım Ajansı",
+        text: "Yusuf Okan",
         // Eğer MyText style parametresi alıyorsa:
         style: const TextStyle(
           color: Colors.white,

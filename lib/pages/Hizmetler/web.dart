@@ -13,11 +13,10 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
   int _selectedService = -1;
   final ScrollController _scrollController = ScrollController();
 
-  // Premium Dark Theme Palette
   final Color _bgColor = const Color(0xFF000000);
   final Color _surfaceColor = const Color(0xFF121212);
   final Color _cardColor = const Color(0xFF1E1E1E);
-  final Color _accentColor = const Color(0xFF00E5FF); // Vibrant Cyan
+  final Color _accentColor = const Color(0xFF00E5FF);
   final Color _textPrimary = Colors.white;
   final Color _textSecondary = Colors.white70;
 
@@ -43,6 +42,8 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
       'title': 'Özel Web Tasarım',
       'description':
           'Markanızı yansıtan, modern ve kullanıcı dostu arayüzler tasarlıyoruz.',
+      'image':
+          'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80',
       'features': [
         'Responsive Tasarım',
         'UI/UX Optimizasyonu',
@@ -56,6 +57,8 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
       'title': 'Web Geliştirme',
       'description':
           'Son teknolojilerle hızlı, güvenli ve ölçeklenebilir web uygulamaları.',
+      'image':
+          'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
       'features': [
         'React / Next.js / Flutter Web',
         'Node.js / Python Backend',
@@ -69,6 +72,8 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
       'title': 'E-Ticaret Çözümleri',
       'description':
           'Satışlarınızı artıracak, güvenli ödeme sistemli online mağazalar.',
+      'image':
+          'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',
       'features': [
         'WooCommerce / Shopify',
         'Ödeme Sistemi Entegrasyonu',
@@ -82,6 +87,8 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
       'title': 'SEO & Performans',
       'description':
           'Google sıralamalarında üst sıralara çıkmanızı sağlıyoruz.',
+      'image':
+          'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
       'features': [
         'Teknik SEO Analizi',
         'Hız Optimizasyonu',
@@ -95,6 +102,8 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
       'title': 'Bakım & Destek',
       'description':
           '7/24 teknik destek ve düzenli güncellemelerle sitenizi güvende tutuyoruz.',
+      'image':
+          'https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=800&q=80',
       'features': [
         'Güvenlik Güncellemeleri',
         'Yedekleme Sistemleri',
@@ -107,6 +116,8 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
       'icon': Icons.phone_iphone_outlined,
       'title': 'Mobil Uyumluluk',
       'description': 'Tüm cihazlarda kusursuz çalışan responsive web deneyimi.',
+      'image':
+          'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
       'features': [
         'PWA (Progressive Web App)',
         'Mobil Öncelikli Tasarım',
@@ -140,22 +151,22 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
     {
       'soru': 'Bir web sitesi ne kadar sürede hazır olur?',
       'cevap':
-          'Projenin kapsamına bağlı olarak 2-8 hafta arasında değişmektedir. Basit kurumsal siteler 2-3 hafta, e-ticaret projeleri ise 4-8 hafta sürmektedir.',
+          'Projenin kapsamına bağlı olarak 2-8 hafta arasında değişmektedir.',
     },
     {
       'soru': 'Web sitesi fiyatları nasıl belirleniyor?',
       'cevap':
-          'Sayfa sayısı, özel fonksiyonlar, entegrasyonlar ve tasarım karmaşıklığına göre fiyatlandırma yapıyoruz. Ücretsiz teklif almak için bizimle iletişime geçebilirsiniz.',
+          'Sayfa sayısı, özel fonksiyonlar ve tasarım karmaşıklığına göre fiyatlandırma yapıyoruz.',
     },
     {
       'soru': 'SEO çalışması yapıyor musunuz?',
       'cevap':
-          'Evet! Tüm projelerimizde temel SEO optimizasyonu standart olarak yapılmaktadır. İleri düzey SEO paketlerimiz için de destek sağlıyoruz.',
+          'Evet! Tüm projelerimizde temel SEO optimizasyonu standart olarak yapılmaktadır.',
     },
     {
       'soru': 'Sonrasında destek alabilir miyim?',
       'cevap':
-          'Kesinlikle! Yayın sonrası 1 yıl ücretsiz bakım garantisi veriyoruz. Ayrıca aylık bakım paketlerimizle sürekli destek sağlıyoruz.',
+          'Kesinlikle! Yayın sonrası 1 yıl ücretsiz bakım garantisi veriyoruz.',
     },
   ];
 
@@ -166,7 +177,6 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [
-          // Siyah Tema AppBar
           SliverAppBar(
             expandedHeight: 120,
             floating: true,
@@ -195,7 +205,7 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
             ),
           ),
 
-          // Hero Section (Premium Dark)
+          // Hero Section
           SliverToBoxAdapter(
             child: Container(
               padding: const EdgeInsets.all(24),
@@ -337,89 +347,44 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
             ),
           ),
 
-          // Hizmetler Grid
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-                childAspectRatio: 1.4,
-                mainAxisSpacing: 16,
-              ),
-              delegate: SliverChildBuilderDelegate((context, index) {
-                final hizmet = hizmetler[index];
-                final isSelected = _selectedService == index;
+          // DEĞİŞİKLİK: SliverGrid yerine SliverToBoxAdapter + Wrap
+          // Böylece kartlar bağımsız olarak büyüyebilir
+          SliverLayoutBuilder(
+            builder: (context, constraints) {
+              final maxWidth = constraints.crossAxisExtent;
+              final isWide = maxWidth > 900;
+              final isMedium = maxWidth > 600 && maxWidth <= 900;
+              final crossAxisCount = isWide ? 3 : (isMedium ? 2 : 1);
+              final horizontalPadding = isWide ? 48.0 : 24.0;
 
-                return InkWell(
-                  onTap: () {},
-                  onHover: (value) =>
-                      setState(() => _selectedService = value ? index : -1),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    decoration: BoxDecoration(
-                      color: _cardColor,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: isSelected
-                            ? hizmet['color']
-                            : Colors.white.withOpacity(0.05),
-                        width: 1.5,
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(
-                            hizmet['icon'],
-                            color: hizmet['color'],
-                            size: 36,
+              return SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                  child: LayoutBuilder(
+                    builder: (context, boxConstraints) {
+                      final spacing = 20.0;
+                      final totalSpacing = spacing * (crossAxisCount - 1);
+                      final cardWidth =
+                          (boxConstraints.maxWidth - totalSpacing) /
+                          crossAxisCount;
+
+                      return Wrap(
+                        spacing: spacing,
+                        runSpacing: spacing,
+                        alignment: WrapAlignment.start,
+                        children: List.generate(
+                          hizmetler.length,
+                          (index) => SizedBox(
+                            width: cardWidth,
+                            child: _buildServiceCard(index),
                           ),
-                          const SizedBox(height: 16),
-                          Text(
-                            hizmet['title'],
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: _textPrimary,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            hizmet['description'],
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: _textSecondary,
-                              height: 1.5,
-                            ),
-                          ),
-                          const Spacer(),
-                          Row(
-                            children: [
-                              Text(
-                                'Detayları İncele',
-                                style: TextStyle(
-                                  color: hizmet['color'],
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              const SizedBox(width: 4),
-                              Icon(
-                                Icons.arrow_forward_rounded,
-                                color: hizmet['color'],
-                                size: 14,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              }, childCount: hizmetler.length),
-            ),
+                ),
+              );
+            },
           ),
 
           // Çalışma Süreci
@@ -558,8 +523,8 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
               margin: const EdgeInsets.all(24),
               padding: const EdgeInsets.all(32),
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [const Color(0xFF00C6FF), const Color(0xFF0072FF)],
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF00C6FF), Color(0xFF0072FF)],
                 ),
                 borderRadius: BorderRadius.circular(24),
               ),
@@ -605,6 +570,174 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
 
           const SliverToBoxAdapter(child: SizedBox(height: 40)),
         ],
+      ),
+    );
+  }
+
+  // GÜNCELLENMİŞ _buildServiceCard - Artık bağımsız olarak büyüyebilir
+  Widget _buildServiceCard(int index) {
+    final hizmet = hizmetler[index];
+    final isSelected = _selectedService == index;
+
+    return InkWell(
+      onTap: () {},
+      onHover: (value) => setState(() => _selectedService = value ? index : -1),
+      borderRadius: BorderRadius.circular(20),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeOutCubic,
+        // Şimdi bu height serbestçe çalışıyor çünkü parent Wrap (değil Grid)
+        height: isSelected ? 380 : 260, // Hover'da 120px büyüme
+        decoration: BoxDecoration(
+          color: _cardColor,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: isSelected
+                ? hizmet['color']
+                : Colors.white.withOpacity(0.05),
+            width: isSelected ? 2 : 1.5,
+          ),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: hizmet['color'].withOpacity(0.3),
+                    blurRadius: 30,
+                    offset: const Offset(0, 10),
+                    spreadRadius: 2,
+                  ),
+                ]
+              : [],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // İkon ve Başlık Row'u
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: hizmet['color'].withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Icon(
+                      hizmet['icon'],
+                      color: hizmet['color'],
+                      size: 24,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      hizmet['title'],
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: _textPrimary,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 12),
+
+              // Açıklama
+              Text(
+                hizmet['description'],
+                style: TextStyle(
+                  fontSize: 13,
+                  color: _textSecondary,
+                  height: 1.5,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+
+              const SizedBox(height: 16),
+
+              // ANİMASYONLU GÖRSEL - Kartla birlikte büyüyor
+              AnimatedOpacity(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+                opacity: isSelected ? 1.0 : 0.0,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.easeOutCubic,
+                  height: isSelected ? 140 : 0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.network(
+                      hizmet['image'] as String,
+                      width: double.infinity,
+                      height: 140,
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Container(
+                          height: 140,
+                          color: Colors.white.withOpacity(0.05),
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!
+                                  : null,
+                              color: hizmet['color'],
+                              strokeWidth: 2,
+                            ),
+                          ),
+                        );
+                      },
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          height: 140,
+                          color: Colors.white.withOpacity(0.05),
+                          child: Center(
+                            child: Icon(
+                              Icons.image_not_supported_outlined,
+                              color: _textSecondary,
+                              size: 32,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+
+              const Spacer(), // Alt kısmı itmek için
+              // Detaylar İncele
+              Row(
+                children: [
+                  Text(
+                    'Detayları İncele',
+                    style: TextStyle(
+                      color: isSelected ? hizmet['color'] : _textSecondary,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  AnimatedRotation(
+                    turns: isSelected ? 0.5 : 0,
+                    duration: const Duration(milliseconds: 300),
+                    child: Icon(
+                      Icons.arrow_forward_rounded,
+                      color: isSelected ? hizmet['color'] : _textSecondary,
+                      size: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

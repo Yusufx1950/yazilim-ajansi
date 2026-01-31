@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      scrollBehavior: MaterialScrollBehavior().copyWith(scrollbars: false),
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       home: Anasayfa(),

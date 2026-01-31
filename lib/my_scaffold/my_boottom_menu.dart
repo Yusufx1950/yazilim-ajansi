@@ -87,7 +87,7 @@ class MyBoottomMenu extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  '© 2024 Okan Yazılım. Tüm hakları saklıdır.',
+                  '© 2024 Yusuf Okan. Tüm hakları saklıdır.',
                   style: TextStyle(color: _textSecondary, fontSize: 12),
                 ),
               ],
@@ -189,36 +189,60 @@ class MyBoottomMenu extends StatelessWidget {
   }
 
   Widget _buildMobileLayout() {
-    return Column(
-      mainAxisSize: MainAxisSize.min, // ÖNEMLİ
-      children: [
-        Center(
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: _accentColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: _accentColor.withOpacity(0.3)),
+    // SingleChildScrollView eklendi - taşmayı önler
+    return SingleChildScrollView(
+      physics:
+          const NeverScrollableScrollPhysics(), // Ana scroll dışında scroll olmaması için
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start, // Sola yasla
+        children: [
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 20),
+              decoration: BoxDecoration(
+                color: _accentColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: _accentColor.withOpacity(0.3)),
+              ),
+              child: Image.asset(Assets.assetsPnglogobeyaz, width: 120),
             ),
-            child: Image.asset(Assets.assetsPnglogobeyaz, width: 120),
           ),
-        ),
-        const SizedBox(height: 30),
-        _buildMobileExpansionTile('Sayfalar', [
-          _LinkItem('Trend', () => Get.to(() => Trend())),
-          _LinkItem('Blog', () => Get.to(() => Blog())),
-        ]),
-        _buildMobileExpansionTile('Hizmetlerimiz', [
-          _LinkItem('Web', () => Get.to(() => WebHizmetimiz())),
-          _LinkItem('Mobil', () => Get.to(() => Mobil())),
-          _LinkItem('API', () => Get.to(() => Api())),
-        ]),
-        _buildMobileExpansionTile('İletişim', [
-          _LinkItem('yusufx9999@gmail.com', null),
-        ]),
-        const SizedBox(height: 30),
-        _buildSocialIcons(),
-      ],
+
+          // ExpansionTile'ları saran liste - shrinkWrap önemli
+          _buildMobileExpansionTile('Sayfalar', [
+            _LinkItem('Trend', () => Get.to(() => Trend())),
+            _LinkItem('Blog', () => Get.to(() => Blog())),
+            _LinkItem(
+              'Müşteri Memnuniyeti',
+              () => Get.to(() => MusteriMemnuniyeti()),
+            ),
+          ]),
+
+          _buildMobileExpansionTile('Hizmetlerimiz', [
+            _LinkItem('Web Geliştirme', () => Get.to(() => WebHizmetimiz())),
+            _LinkItem('Mobil Uygulama', () => Get.to(() => Mobil())),
+            _LinkItem('Masaüstü Uygulama', () => Get.to(() => Masaustu())),
+            _LinkItem('API & Microservice', () => Get.to(() => Api())),
+            _LinkItem('Siber Güvenlik', () => Get.to(() => SiberGuvenlik())),
+          ]),
+
+          _buildMobileExpansionTile('Teklif Al', [
+            _LinkItem('Teknik Danışmanlık', null),
+            _LinkItem('Hızlı Fiyatlandırma', null),
+          ]),
+
+          _buildMobileExpansionTile('İletişim', [
+            _LinkItem('yusufx9999@gmail.com', null, isEmail: true),
+            _LinkItem('+90 534 717 85 35', null, isPhone: true),
+          ]),
+
+          const SizedBox(height: 30),
+          Center(child: _buildSocialIcons()),
+          const SizedBox(height: 20),
+        ],
+      ),
     );
   }
 
@@ -278,6 +302,9 @@ class MyBoottomMenu extends StatelessWidget {
     return Theme(
       data: ThemeData.dark().copyWith(dividerColor: Colors.transparent),
       child: ExpansionTile(
+        tilePadding: const EdgeInsets.symmetric(
+          horizontal: 0,
+        ), // Yatay padding'i kaldır
         title: Text(
           title.toUpperCase(),
           style: TextStyle(
@@ -289,14 +316,28 @@ class MyBoottomMenu extends StatelessWidget {
         ),
         iconColor: _accentColor,
         collapsedIconColor: _textSecondary,
-        children: links
-            .map(
-              (link) => ListTile(
-                onTap: link.onTap,
-                title: MyTextBeyaz(text: link.title, FontSize: 14),
-              ),
-            )
-            .toList(),
+        // childrenPadding ekleyerek içerik boşluğu ayarla
+        childrenPadding: const EdgeInsets.only(left: 16, bottom: 8),
+        children: links.map((link) {
+          return ListTile(
+            contentPadding: EdgeInsets.zero, // Gereksiz padding'i kaldır
+            onTap: link.onTap,
+            leading: link.isEmail
+                ? Icon(Icons.email_outlined, color: _textSecondary, size: 18)
+                : link.isPhone
+                ? Icon(Icons.phone_outlined, color: _textSecondary, size: 18)
+                : Container(
+                    width: 4,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: _accentPurple,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+            title: MyTextBeyaz(text: link.title, FontSize: 14),
+            minLeadingWidth: 20, // Leading genişliğini ayarla
+          );
+        }).toList(),
       ),
     );
   }

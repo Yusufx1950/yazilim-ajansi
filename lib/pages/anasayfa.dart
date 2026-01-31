@@ -198,7 +198,7 @@ class _AnasayfaState extends State<Anasayfa> with TickerProviderStateMixin {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      'Okan Yazılım Ajansı',
+                      'Yusuf Okan',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -621,123 +621,152 @@ class _AnasayfaState extends State<Anasayfa> with TickerProviderStateMixin {
             ),
 
             Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: isMobile ? 20 : 40),
-                  ShaderMask(
-                    shaderCallback: (bounds) => LinearGradient(
-                      colors: [_accentColor, _accentPurple, _accentPink],
-                    ).createShader(bounds),
-                    child: Text(
-                      'DİJİTAL DÖNÜŞÜM\nORTAĞINIZ',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: isMobile ? 32 : (isTablet ? 44 : 56),
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        height: 1.2,
-                        letterSpacing: -1,
+              child: SingleChildScrollView(
+                // YENİ: Alt tarafta güvenli boşluk bırak (navigasyon çubuğu + ekstra)
+                padding: EdgeInsets.only(
+                  bottom:
+                      MediaQuery.of(context).padding.bottom +
+                      (isMobile ? 10 : 20),
+                ),
+                physics:
+                    const BouncingScrollPhysics(), // iOS tarzı elastik scroll
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment:
+                      CrossAxisAlignment.center, // Ortalama için eklendi
+                  children: [
+                    SizedBox(height: isMobile ? 20 : 40),
+
+                    ShaderMask(
+                      shaderCallback: (bounds) => LinearGradient(
+                        colors: [_accentColor, _accentPurple, _accentPink],
+                      ).createShader(bounds),
+                      child: Text(
+                        'DİJİTAL DÖNÜŞÜM\nORTAĞINIZ',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: isMobile ? 32 : (isTablet ? 44 : 56),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          height: 1.2,
+                          letterSpacing: -1,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: isMobile ? 12 : 20),
-                  Text(
-                    'Fikirden fonksiyona, satır satır değer üretiyoruz',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: isMobile ? 16 : 20,
-                      color: _textSecondary,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-                  SizedBox(height: isMobile ? 30 : 60),
 
-                  // Responsive Kartlar
-                  if (isMobile)
-                    Column(
-                      children: [
-                        _buildNeonCard(
-                          'Mobil Uygulama',
-                          'Zarif Tasarım\nVe Son Derece Hızlı',
-                          Assets.assetsSeyahat,
-                          _accentColor,
-                          0,
+                    SizedBox(height: isMobile ? 12 : 20),
+
+                    Text(
+                      'Fikirden fonksiyona, satır satır değer üretiyoruz',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: isMobile ? 16 : 20,
+                        color: _textSecondary,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+
+                    SizedBox(height: isMobile ? 30 : 60),
+
+                    // Responsive Kartlar
+                    if (isMobile)
+                      Padding(
+                        // YENİ: Mobil kartlara yatay padding (kenarlara yapışmasın)
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          children: [
+                            _buildNeonCard(
+                              'Mobil Uygulama',
+                              'Zarif Tasarım\nVe Son Derece Hızlı',
+                              Assets.assetsSeyahat,
+                              _accentColor,
+                              0,
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ), // 12'den 16'ya çıkarıldı
+                            _buildNeonCard(
+                              'Web Uygulama',
+                              'Modern Tasarım\nve Ödeme Entegrasyonu',
+                              Assets.assetsKurumsal,
+                              _accentPurple,
+                              1,
+                            ),
+                            const SizedBox(height: 16),
+                            _buildNeonCard(
+                              'Masaüstü',
+                              'Otomasyon Sistemleri',
+                              Assets.assetsKimlik,
+                              _accentPink,
+                              2,
+                            ),
+                            const SizedBox(height: 16),
+                            _buildNeonCard(
+                              'Siber Güvenlik',
+                              'Uygulama Güvenliği',
+                              Assets.assetsGuvenlik,
+                              const Color(0xFF10B981),
+                              3,
+                            ),
+                          ],
                         ),
-                        const SizedBox(height: 12),
-                        _buildNeonCard(
-                          'Web Uygulama',
-                          'Modern Tasarım\nve Ödeme Entegrasyonu',
-                          Assets.assetsKurumsal,
-                          _accentPurple,
-                          1,
-                        ),
-                        const SizedBox(height: 12),
-                        _buildNeonCard(
-                          'Masaüstü',
-                          'Otomasyon Sistemleri',
-                          Assets.assetsKimlik,
-                          _accentPink,
-                          2,
-                        ),
-                        const SizedBox(height: 12),
-                        _buildNeonCard(
-                          'Siber Güvenlik',
-                          'Uygulama Güvenliği',
-                          Assets.assetsGuvenlik,
-                          const Color(0xFF10B981),
-                          3,
-                        ),
-                      ],
-                    )
-                  else
+                      )
+                    else
+                      Wrap(
+                        spacing: 20,
+                        runSpacing: 20,
+                        alignment: WrapAlignment.center,
+                        children: [
+                          _buildNeonCard(
+                            'Mobil Uygulama',
+                            'Zarif Tasarım\nVe Son Derece Hızlı',
+                            Assets.assetsSeyahat,
+                            _accentColor,
+                            0,
+                          ),
+                          _buildNeonCard(
+                            'Web Uygulama',
+                            'Modern Tasarım\nve Ödeme Entegrasyonu',
+                            Assets.assetsKurumsal,
+                            _accentPurple,
+                            1,
+                          ),
+                          _buildNeonCard(
+                            'Masaüstü Platformu',
+                            'İhtiyacınız Olan Otomasyon\nSistemleri İçin İdeal',
+                            Assets.assetsKimlik,
+                            _accentPink,
+                            2,
+                          ),
+                          _buildNeonCard(
+                            'Siber Güvenlik',
+                            'Uygulama Güvenliği\nHer Zaman Ön Planda',
+                            Assets.assetsGuvenlik,
+                            const Color(0xFF10B981),
+                            3,
+                          ),
+                        ],
+                      ),
+
+                    SizedBox(
+                      height: isMobile ? 30 : 50,
+                    ), // 20'den 30'a çıkarıldı
+
                     Wrap(
-                      spacing: 20,
-                      runSpacing: 20,
+                      spacing: 12,
+                      runSpacing: 12,
                       alignment: WrapAlignment.center,
                       children: [
-                        _buildNeonCard(
-                          'Mobil Uygulama',
-                          'Zarif Tasarım\nVe Son Derece Hızlı',
-                          Assets.assetsSeyahat,
-                          _accentColor,
-                          0,
-                        ),
-                        _buildNeonCard(
-                          'Web Uygulama',
-                          'Modern Tasarım\nve Ödeme Entegrasyonu',
-                          Assets.assetsKurumsal,
-                          _accentPurple,
-                          1,
-                        ),
-                        _buildNeonCard(
-                          'Masaüstü Platformu',
-                          'İhtiyacınız Olan Otomasyon\nSistemleri İçin İdeal',
-                          Assets.assetsKimlik,
-                          _accentPink,
-                          2,
-                        ),
-                        _buildNeonCard(
-                          'Siber Güvenlik',
-                          'Uygulama Güvenliği\nHer Zaman Ön Planda',
-                          Assets.assetsGuvenlik,
-                          const Color(0xFF10B981),
-                          3,
-                        ),
+                        _buildGlowButton('Şimdi Başla →', _accentColor, () {}),
+                        _buildOutlineButton('Çalışma Düzeni', () {}),
                       ],
                     ),
 
-                  SizedBox(height: isMobile ? 20 : 40),
-                  Wrap(
-                    spacing: 12,
-                    runSpacing: 12,
-                    alignment: WrapAlignment.center,
-                    children: [
-                      _buildGlowButton('Şimdi Başla →', _accentColor, () {}),
-                      _buildOutlineButton('Çalışma Düzeni', () {}),
-                    ],
-                  ),
-                ],
+                    // YENİ: Butonların altına ekstra boşluk (çok önemli!)
+                    SizedBox(height: isMobile ? 50 : 80),
+                  ],
+                ),
               ),
             ),
           ],
