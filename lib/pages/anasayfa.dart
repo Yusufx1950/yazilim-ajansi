@@ -589,7 +589,7 @@ class _AnasayfaState extends State<Anasayfa> with TickerProviderStateMixin {
         );
       },
       child: Container(
-        height: isMobile ? Get.height * 0.9 : Get.height - 100,
+        height: isMobile ? Get.height * 0.8 : Get.height - 200,
         width: Get.width,
         padding: EdgeInsets.all(isMobile ? 16 : 24),
         child: Stack(

@@ -580,8 +580,20 @@ class _WebHizmetimizState extends State<WebHizmetimiz>
     final isSelected = _selectedService == index;
 
     return InkWell(
-      onTap: () {},
-      onHover: (value) => setState(() => _selectedService = value ? index : -1),
+      onTap: () {
+        // Mobil için: Tıklayınca aç/kapat
+        setState(() {
+          if (_selectedService == index) {
+            _selectedService = -1; // Kapat
+          } else {
+            _selectedService = index; // Aç
+          }
+        });
+      },
+      onHover: (value) {
+        // Desktop için: Üzerine gelince aç/kapat
+        setState(() => _selectedService = value ? index : -1);
+      },
       borderRadius: BorderRadius.circular(20),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 400),
